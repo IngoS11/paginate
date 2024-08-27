@@ -1,6 +1,6 @@
 import logging
 import os
-from flask import Flask, jsonify, request, redirect, url_for
+from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -24,6 +24,7 @@ class User(db.Model):
 
     def __repr__(self):
         return f'<User {self.name}>'
+
 
 @app.route('/users', methods=['GET'])
 def get_users():
