@@ -1,5 +1,6 @@
 import logging
 import os
+import json
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 
@@ -41,6 +42,12 @@ def get_users():
         'per_page': users.per_page,
         'pages': users.pages
     })
+
+
+@app.route('/urlmon', methods=['GET', 'POST'])
+def get_request():
+    return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
+    
 
 if __name__ == '__main__':
     db.create_all()
